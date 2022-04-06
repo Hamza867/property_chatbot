@@ -1,0 +1,171 @@
+version: "2.0"
+
+stories:
+- story: greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_service
+
+- story: Buyer path
+  steps:
+  - intent: buyer
+    entities:
+      - property_type: "Buyer"
+  - slot_was_set:
+      - property_type: "Buyer"
+  - action: utter_welcome
+  - action: utter_my_name
+  - intent: my_name
+    entities:
+    - name: "jony"
+  - slot_was_set:
+      - name: "jony"
+  - action: utter_my_number
+  - intent: my_number
+    entities:
+    - number: "+923337685924"
+  - slot_was_set:
+      - number: "+923337685924"
+  - action: utter_my_email
+  - intent: my_email
+    entities:
+    - email: "Ali2091@gmail.com"
+  - slot_was_set:
+      - email: "Ali2091@gmail.com"
+  - action: utter_detail_thanks
+  - action: action_service4
+  - intent: yes
+  - action: action_Sendemail
+  - action: action_service1
+
+- story: try again buyer
+  steps:
+  - intent: no
+  - action: utter_my_name
+  - intent: my_name
+    entities:
+    - name: "Ali"
+  - slot_was_set:
+      - name: "Ali"
+  - action: utter_my_number
+  - intent: my_number
+    entities:
+    - number: "+923337685924"
+  - slot_was_set:
+      - number: "+923337685924"
+  - action: utter_my_email
+  - intent: my_email
+    entities:
+    - email: "Ali2091@gmail.com"
+  - slot_was_set:
+      - email: "Ali2091@gmail.com"
+  - action: action_service4
+
+- story: Buyer path 1
+  steps:
+  - intent: perfect_choices
+  - action: utter_where_from
+  - intent: where_from
+  - action: utter_areas
+  - intent: areas
+  - action: utter_num_bedroom
+  - intent: num_bedroom
+  - action: utter_num_bathroom
+  - intent: num_bathroom
+  - action: utter_more_info
+  - intent: more_info
+  - action: utter_price
+  - intent: price
+  - action: utter_end
+  - action: action_saveconversation
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: Seller path
+  steps:
+  - intent: seller
+    entities:
+      - property_type: "Seller"
+  - slot_was_set:
+      - property_type: "Seller"
+  - action: utter_welcome
+  - action: utter_my_name
+  - intent: my_name
+    entities:
+    - name: "Ali"
+  - slot_was_set:
+      - name: "Ali"
+  - action: utter_my_number
+  - intent: my_number
+    entities:
+    - number: "+923337685924"
+  - slot_was_set:
+      - number: "+923337685924"
+  - action: utter_my_email
+  - intent: my_email
+    entities:
+    - email: "Ali2091@gmail.com"
+  - slot_was_set:
+      - email: "Ali2091@gmail.com"
+  - action: utter_detail_thanks
+  - action: action_service5
+  - intent: yess
+  - action: action_Send_email
+  - action: action_service2
+
+- story: try again seller
+  steps:
+  - intent: noo
+  - action: utter_my_name
+  - intent: my_name
+    entities:
+    - name: "Ali"
+  - slot_was_set:
+      - name: "Ali"
+  - action: utter_my_number
+  - intent: my_number
+    entities:
+    - number: "+923337685924"
+  - slot_was_set:
+      - number: "+923337685924"
+  - action: utter_my_email
+  - intent: my_email
+    entities:
+    - email: "Ali2091@gmail.com"
+  - slot_was_set:
+      - email: "Ali2091@gmail.com"
+  - action: action_service5
+
+- story: Seller path
+  steps:
+  - intent: details_property
+  - action: action_service3
+
+- story: Seller path affirm
+  steps:
+  - intent: affirm
+  - action: utter_ownership_period
+  - intent: ownership_period
+  - action: utter_selling_intention
+  - intent: selling_intention
+  - action: utter_selling_duration
+  - intent: selling_duration
+  - action: utter_condition_of_property
+  - intent: condition_of_property
+  - action: utter_current_living
+  - intent: current_living
+  - action: utter_property_address
+  - intent: property_address
+  - action: utter_meeting_schedule
+  - intent: meeting_schedule
+  - action: utter_goodbye
+  - action: action_saveconversation
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: Seller path deny
+  steps:
+  - intent: deny
+  - action: utter_goodbye
+  - action: action_saveconversation
